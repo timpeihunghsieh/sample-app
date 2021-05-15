@@ -11,15 +11,28 @@ import java.util.logging.Logger;
 // import greeter.HelloRequest;
 // import greeter.HelloReply;
 
+//import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+
+import io.prometheus.client.exporter.MetricsServlet;
+import io.prometheus.client.Counter;
+
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
 public class GreeterServer {
+
+  static final Counter requests_total = Counter.build()
+      .name("requests_total").help("Total Incoming requests.").register();
+
   private static final Logger logger = Logger.getLogger(GreeterServer.class.getName());
 
   /* The port on which the server should run */
   private final int port;
   private Server server;
+
+  private org.eclipse.jetty.server.Server jetty_server;
 
   public GreeterServer() {
     this(50051);
@@ -35,6 +48,20 @@ public class GreeterServer {
         .build()
         .start();
     logger.info("Server started, listening on " + port);
+
+
+    try {
+      jetty_server = new org.eclipse.jetty.server.Server(8080);
+      ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+      context.setContextPath("/");
+      jetty_server.setHandler(context);
+      context.addServlet(new ServletHolder(new MetricsServlet()), "/metrics");
+      jetty_server.start();
+    } catch(Exception e) {
+      // ignore
+    }
+
+
     Runtime.getRuntime().addShutdownHook(new Thread() {
       @Override
       public void run() {
@@ -74,6 +101,7 @@ public class GreeterServer {
 
     @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
+      requests_total.inc();
       HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
       responseObserver.onNext(reply);
       responseObserver.onCompleted();

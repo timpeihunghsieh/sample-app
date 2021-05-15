@@ -38,3 +38,22 @@ load("@maven//:compat.bzl", "compat_repositories")
 compat_repositories()
 
 grpc_java_repositories()
+
+
+maven_install(
+    name = "main_mavin",
+    artifacts = [
+        "junit:junit:4.12",
+        "org.eclipse.jetty:jetty-server:9.2.11.v20150529",
+        "org.eclipse.jetty:jetty-servlet:9.2.11.v20150529",
+        "org.eclipse.jetty:jetty-util:9.2.11.v20150529",
+        "io.prometheus:simpleclient:0.6.0",
+        "io.prometheus:simpleclient_servlet:0.6.0",
+    ],
+    repositories = [
+        # Private repositories are supported through HTTP Basic auth
+        # "http://username:password@localhost:8081/artifactory/my-repository",
+        "https://maven.google.com",
+        "https://repo1.maven.org/maven2",
+    ],
+)

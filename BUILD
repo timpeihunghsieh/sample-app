@@ -21,6 +21,11 @@ java_library(
     srcs = ["GreeterServer.java"],
     deps = [
         ":greeter_java_grpc",
+        "@main_mavin//:org_eclipse_jetty_jetty_server",
+        "@main_mavin//:org_eclipse_jetty_jetty_servlet",
+        "@main_mavin//:org_eclipse_jetty_jetty_util",
+        "@main_mavin//:io_prometheus_simpleclient",
+        "@main_mavin//:io_prometheus_simpleclient_servlet",
     ],
 )
 
