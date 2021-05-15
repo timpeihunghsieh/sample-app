@@ -1,53 +1,26 @@
 package greeter;
 
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
-import io.grpc.stub.StreamObserver;
-
 import java.io.IOException;
-import java.util.logging.Logger;
-
-// import greeter.Greeter;
-// import greeter.HelloRequest;
-// import greeter.HelloReply;
 
 //import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 import io.prometheus.client.exporter.MetricsServlet;
-import io.prometheus.client.Counter;
 
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
 public class GreeterServer {
-
-  static final Counter requests_total = Counter.build()
-      .name("requests_total").help("Total Incoming requests.").register();
-
-  private static final Logger logger = Logger.getLogger(GreeterServer.class.getName());
-
-  /* The port on which the server should run */
-  private final int port;
-  private Server server;
-
+  private GreeterRpcServer greeter_rpc_server;
   private org.eclipse.jetty.server.Server jetty_server;
 
   public GreeterServer() {
-    this(50051);
-  }
-
-  public GreeterServer(int port) {
-    this.port = port;
+    this.greeter_rpc_server = new GreeterRpcServer(50051);
   }
 
   public void start() throws IOException {
-    server = ServerBuilder.forPort(port)
-        .addService(new GreeterImpl())
-        .build()
-        .start();
-    logger.info("Server started, listening on " + port);
+    this.greeter_rpc_server.start();
 
 
     try {
@@ -74,8 +47,8 @@ public class GreeterServer {
   }
 
   public void stop() {
-    if (server != null) {
-      server.shutdown();
+    if (this.greeter_rpc_server != null) {
+      this.greeter_rpc_server.stop();
     }
   }
 
@@ -83,8 +56,8 @@ public class GreeterServer {
    * Await termination on the main thread since the grpc library uses daemon threads.
    */
   private void blockUntilShutdown() throws InterruptedException {
-    if (server != null) {
-      server.awaitTermination();
+    if (this.greeter_rpc_server != null) {
+      this.greeter_rpc_server.blockUntilShutdown();
     }
   }
 
@@ -95,16 +68,5 @@ public class GreeterServer {
     final GreeterServer server = new GreeterServer();
     server.start();
     server.blockUntilShutdown();
-  }
-
-  private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
-
-    @Override
-    public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-      requests_total.inc();
-      HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
-      responseObserver.onNext(reply);
-      responseObserver.onCompleted();
-    }
   }
 }

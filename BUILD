@@ -17,14 +17,32 @@ java_grpc_library(
 )
 
 java_library(
+    name = "greeter_service_impl",
+    srcs = ["GreeterServiceImpl.java"],
+    deps = [
+        ":greeter_java_grpc",
+        "@main_mavin//:io_prometheus_simpleclient",
+    ]
+)
+
+java_library(
+    name = "greeter_rpc_server",
+    srcs = ["GreeterRpcServer.java"],
+    deps = [
+        ":greeter_java_grpc",
+        ":greeter_service_impl",
+    ]
+)
+
+java_library(
     name = "server",
     srcs = ["GreeterServer.java"],
     deps = [
         ":greeter_java_grpc",
+        ":greeter_rpc_server",
         "@main_mavin//:org_eclipse_jetty_jetty_server",
         "@main_mavin//:org_eclipse_jetty_jetty_servlet",
         "@main_mavin//:org_eclipse_jetty_jetty_util",
-        "@main_mavin//:io_prometheus_simpleclient",
         "@main_mavin//:io_prometheus_simpleclient_servlet",
     ],
 )
