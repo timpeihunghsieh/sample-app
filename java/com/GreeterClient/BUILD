@@ -4,7 +4,7 @@ java_library(
     name = "greeter_client",
     srcs = ["GreeterClient.java"],
     deps = [
-        "//java/com/GreeterService/greeter:greeter_java_grpc",
+        "//java/com/GreeterServer/greeter:greeter_java_grpc",
     ],
 )
 
