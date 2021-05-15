@@ -13,7 +13,8 @@ import java.util.logging.Logger;
  * HelloWorldServer}.
  */
 public class GreeterClient {
-  private static final Logger logger = Logger.getLogger(GreeterClient.class.getName());
+  private static final Logger logger =
+      Logger.getLogger(GreeterClient.class.getName());
 
   private final ManagedChannel channel;
   private final GreeterGrpc.GreeterBlockingStub blockingStub;

@@ -7,7 +7,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import io.prometheus.client.exporter.MetricsServlet;
 
 public class GreeterJettyServer {
-  private org.eclipse.jetty.server.Server jetty_server;
+  private org.eclipse.jetty.server.Server jettyServer;
   private int port;
 
   public GreeterJettyServer(int port) {
@@ -15,11 +15,12 @@ public class GreeterJettyServer {
   }
 
   public void start() throws Exception {
-    jetty_server = new org.eclipse.jetty.server.Server(this.port);
-      ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+    jettyServer = new org.eclipse.jetty.server.Server(this.port);
+      ServletContextHandler context =
+          new ServletContextHandler(ServletContextHandler.SESSIONS);
       context.setContextPath("/");
-      jetty_server.setHandler(context);
+      jettyServer.setHandler(context);
       context.addServlet(new ServletHolder(new MetricsServlet()), "/metrics");
-      jetty_server.start();
+      jettyServer.start();
   }
 }
