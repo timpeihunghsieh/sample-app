@@ -49,6 +49,7 @@ maven_install(
         "org.eclipse.jetty:jetty-util:9.2.11.v20150529",
         "io.prometheus:simpleclient:0.6.0",
         "io.prometheus:simpleclient_servlet:0.6.0",
+        "com.google.inject:guice:4.2.2",
         "org.slf4j:slf4j-api:1.7.5",
         "org.slf4j:slf4j-simple:1.7.5",
     ],

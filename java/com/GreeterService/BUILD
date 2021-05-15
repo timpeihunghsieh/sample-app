@@ -17,9 +17,15 @@ java_grpc_library(
 
 java_library(
     name = "greeter_rpc_impl",
-    srcs = ["GreeterRpcImpl.java"],
+    srcs = [
+        "GreeterRpcImpl.java",
+        "Greeter.java",
+        "GreeterImpl.java",
+        "GreeterModule.java",
+    ],
     deps = [
         ":greeter_java_grpc",
+        "@main_mavin//:com_google_inject_guice",
         "@main_mavin//:io_prometheus_simpleclient",
     ]
 )

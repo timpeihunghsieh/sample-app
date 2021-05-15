@@ -13,3 +13,15 @@ java_test(
         "@main_mavin//:javax_servlet_javax_servlet_api",
     ],
 )
+
+java_test(
+    name = "greeter_impl_test",
+    size = "small",
+    srcs = ["GreeterImplTest.java"],
+    test_class = "com.greeterservice.GreeterImplTest",
+    deps = [
+        "//java/com/GreeterService:greeter_rpc_impl",
+        "//java/com/GreeterService:greeter_java_grpc",
+        "@main_mavin//:junit_junit",
+    ],
+)
