@@ -35,15 +35,24 @@ java_library(
 )
 
 java_library(
+    name = "greeter_jetty_server",
+    srcs = ["GreeterJettyServer.java"],
+    deps = [
+        ":greeter_java_grpc",
+        "@main_mavin//:org_eclipse_jetty_jetty_server",
+        "@main_mavin//:org_eclipse_jetty_jetty_servlet",
+        "@main_mavin//:org_eclipse_jetty_jetty_util",
+        "@main_mavin//:io_prometheus_simpleclient_servlet",
+    ]
+)
+
+java_library(
     name = "server",
     srcs = ["GreeterServer.java"],
     deps = [
         ":greeter_java_grpc",
         ":greeter_rpc_server",
-        "@main_mavin//:org_eclipse_jetty_jetty_server",
-        "@main_mavin//:org_eclipse_jetty_jetty_servlet",
-        "@main_mavin//:org_eclipse_jetty_jetty_util",
-        "@main_mavin//:io_prometheus_simpleclient_servlet",
+        ":greeter_jetty_server",
     ],
 )
 

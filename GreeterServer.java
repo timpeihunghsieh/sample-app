@@ -2,35 +2,23 @@ package greeter;
 
 import java.io.IOException;
 
-//import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-
-import io.prometheus.client.exporter.MetricsServlet;
-
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
 public class GreeterServer {
   private GreeterRpcServer greeter_rpc_server;
-  private org.eclipse.jetty.server.Server jetty_server;
+  private GreeterJettyServer greeter_jetty_server;
 
   public GreeterServer() {
     this.greeter_rpc_server = new GreeterRpcServer(50051);
+    this.greeter_jetty_server = new GreeterJettyServer(8080);
   }
 
   public void start() throws IOException {
     this.greeter_rpc_server.start();
-
-
     try {
-      jetty_server = new org.eclipse.jetty.server.Server(8080);
-      ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-      context.setContextPath("/");
-      jetty_server.setHandler(context);
-      context.addServlet(new ServletHolder(new MetricsServlet()), "/metrics");
-      jetty_server.start();
-    } catch(Exception e) {
+      this.greeter_jetty_server.start();
+    } catch (Exception e) {
       // ignore
     }
 
