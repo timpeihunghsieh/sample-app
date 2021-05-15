@@ -6,8 +6,8 @@ java_test(
     srcs = ["GreeterImplTest.java"],
     test_class = "com.greeterservice.GreeterImplTest",
     deps = [
-        "//java/com/GreeterService/greeter:greeter_rpc_impl",
-        "//java/com/GreeterService/greeter:greeter_java_grpc",
+        "//java/com/GreeterServer/greeter:greeter_rpc_impl",
+        "//java/com/GreeterServer/greeter:greeter_java_grpc",
         "@main_mavin//:junit_junit",
     ],
 )

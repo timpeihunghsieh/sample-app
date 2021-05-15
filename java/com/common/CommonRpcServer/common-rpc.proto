@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.common.commrpcserver";
+option java_outer_classname = "CommonRpcProto";
+
+package com.common.commonrpcserver;
+
+service SampleService {
+  rpc SampleMethod(SampleRequest) returns (SampleResponse) {}
+}
+
+message SampleRequest {
+  string name = 1;
+}
+
+message SampleResponse {
+  string message = 1;
+}

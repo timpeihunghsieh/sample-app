@@ -7,7 +7,7 @@ java_test(
     test_class = "com.greeterservice.GreeterServiceTest",
     deps = [
         "//java/com/GreeterClient:greeter_client",
-        "//java/com/GreeterService/server:greeter_server",
+        "//java/com/GreeterServer/server:greeter_server",
         "@main_mavin//:junit_junit",
         "@main_mavin//:org_slf4j_slf4j_api",
         "@main_mavin//:javax_servlet_javax_servlet_api",
