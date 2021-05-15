@@ -8,7 +8,7 @@ import io.grpc.stub.StreamObserver;
 
 import io.prometheus.client.Counter;
 
-public class GreeterServiceImpl extends GreeterGrpc.GreeterImplBase {
+public class GreeterRpcImpl extends GreeterGrpc.GreeterImplBase {
 
   static final Counter requestsTotal = Counter.build()
       .name("requests_total").help("Total Incoming requests.").register();

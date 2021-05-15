@@ -16,8 +16,8 @@ java_grpc_library(
 )
 
 java_library(
-    name = "greeter_service_impl",
-    srcs = ["GreeterServiceImpl.java"],
+    name = "greeter_rpc_impl",
+    srcs = ["GreeterRpcImpl.java"],
     deps = [
         ":greeter_java_grpc",
         "@main_mavin//:io_prometheus_simpleclient",
@@ -29,7 +29,7 @@ java_library(
     srcs = ["GreeterRpcServer.java"],
     deps = [
         ":greeter_java_grpc",
-        ":greeter_service_impl",
+        ":greeter_rpc_impl",
     ]
 )
 

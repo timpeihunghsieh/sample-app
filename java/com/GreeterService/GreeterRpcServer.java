@@ -21,7 +21,7 @@ public class GreeterRpcServer {
 
   public void start() throws IOException {
     server = ServerBuilder.forPort(port)
-        .addService(new GreeterServiceImpl())
+        .addService(new GreeterRpcImpl())
         .build()
         .start();
     logger.info("Server started, listening on " + port);
