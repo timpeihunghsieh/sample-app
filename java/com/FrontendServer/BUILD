@@ -11,8 +11,11 @@ java_library(
         "FrontendServlet.java",
         "FrontendLogic.java",
         "FrontendLogicImpl.java",
+        "GreeterCaller.java",
+        "GreeterCallerImpl.java",
     ],
     deps = [
+        "//java/com/GreeterServer/greeter:greeter_java_grpc",
         "@main_mavin//:org_eclipse_jetty_jetty_server",
         "@main_mavin//:org_eclipse_jetty_jetty_servlet",
         "@main_mavin//:org_eclipse_jetty_jetty_util",
