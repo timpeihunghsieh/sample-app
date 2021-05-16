@@ -50,8 +50,10 @@ maven_install(
         "io.prometheus:simpleclient:0.6.0",
         "io.prometheus:simpleclient_servlet:0.6.0",
         "com.google.inject:guice:4.2.2",
+        "org.mockito:mockito-all:1.10.19",
         "org.slf4j:slf4j-api:1.7.5",
         "org.slf4j:slf4j-simple:1.7.5",
+        "org.springframework:spring-test:5.0.12.RELEASE",
     ],
     repositories = [
         # Private repositories are supported through HTTP Basic auth
