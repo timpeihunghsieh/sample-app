@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Istio Gateway
-# ./deployments/istio/startup.sh
+./deployments/istio/startup.sh
 
 # Note! As of April 2021, ELK and Prometheus stack can't be started together
 # in Minikube due to lack of resources.
