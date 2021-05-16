@@ -17,5 +17,4 @@ INGRESS_HOST=$(minikube ip)
 GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 echo "Example test call: "
 echo "$ curl http://$GATEWAY_URL"
-echo "$ curl \"http://$GATEWAY_URL/?short_url=abc&long_url=http://google.com\""
-echo "$ watch 'curl \"http://$GATEWAY_URL/?short_url=abc&long_url=http://google.com\"'"
+echo "$ curl \"http://$GATEWAY_URL/?r=abc\""

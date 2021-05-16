@@ -4,7 +4,7 @@ metadata:
   name: frontend-server-virtual-service
 spec:
   hosts:
-  - frontend.tim.hsieh
+  - "*"
   gateways:
   - frontend-gateway
   http:

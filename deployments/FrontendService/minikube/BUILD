@@ -18,6 +18,11 @@ local_k8(
     template = "//deployments/FrontendService/FrontendService:deployment.yaml",
 )
 
+local_k8(
+    name = "frontend-server-virtual-service",
+    template = "//deployments/FrontendService/FrontendService:virtual-service.yaml",
+)
+
 k8s_objects(
     name = "frontend-server",
     objects = [
@@ -25,6 +30,7 @@ k8s_objects(
         # TODO(timhsieh): re-enable when prometheus is loaded
         #":url-shorten-service-monitor",
         ":frontend-server-deployment",
+        ":frontend-server-virtual-service",
     ],
 )
 
