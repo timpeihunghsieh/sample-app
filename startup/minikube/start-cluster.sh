@@ -13,5 +13,8 @@
 # # ELK
 # ./deployments/elk-stack/startup.sh
 
+# Greeter Server
+bazel run deployments/greeter-server/minikube:k8-all.apply
+
 # Frontend
 bazel run deployments/FrontendService/minikube:k8-all.apply

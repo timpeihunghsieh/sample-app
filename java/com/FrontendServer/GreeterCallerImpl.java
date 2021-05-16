@@ -15,8 +15,8 @@ public class GreeterCallerImpl implements GreeterCaller {
 
   @Inject
   public GreeterCallerImpl() {
-    final String kHost = "greeter-service";
-    final int kPort = 80;
+    final String kHost = "greeter-server";
+    final int kPort = 50051;
     channel = ManagedChannelBuilder.forAddress(kHost, kPort)
         .usePlaintext()
         .build();
