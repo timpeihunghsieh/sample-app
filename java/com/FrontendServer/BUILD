@@ -1,5 +1,7 @@
 package(default_visibility = ["//visibility:public"])
 
+load("@io_bazel_rules_docker//java:image.bzl", "java_image")
+
 # url-shorten
 java_library(
     name = "frontend-service",
@@ -20,5 +22,14 @@ java_library(
         "@main_mavin//:io_prometheus_simpleclient_servlet",
         "@main_mavin//:org_slf4j_slf4j_api",
         "@main_mavin//:org_slf4j_slf4j_simple",
+    ],
+)
+
+java_image(
+    name = "frontend-service-img",
+    # base = "@ubuntu//image",  # This is optional. It makes it easier to debug,
+    main_class = "com.frontendservice.FrontendServer",
+    runtime_deps = [
+        ":frontend-service",
     ],
 )

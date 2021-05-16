@@ -14,4 +14,4 @@
 # ./deployments/elk-stack/startup.sh
 
 # Frontend
-# bazel run deployments/url-shorten/minikube:k8-all.apply
+bazel run deployments/FrontendService/minikube:k8-all.apply
