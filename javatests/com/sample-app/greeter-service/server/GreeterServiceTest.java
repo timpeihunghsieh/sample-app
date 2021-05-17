@@ -1,4 +1,4 @@
-package com.greeterservice;
+package com.sampleapp.greeterservice;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,8 +11,6 @@ import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import com.greeterclient.GreeterClient;
 
 /**
  * A simple integration test that runs the server at startup.

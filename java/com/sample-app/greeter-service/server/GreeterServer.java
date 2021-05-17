@@ -1,4 +1,4 @@
-package com.greeterservice;
+package com.sampleapp.greeterservice;
 
 import java.io.IOException;
 

@@ -4,10 +4,10 @@ java_test(
     name = "greeter_service_test",
     size = "small",
     srcs = ["GreeterServiceTest.java"],
-    test_class = "com.greeterservice.GreeterServiceTest",
+    test_class = "com.sampleapp.greeterservice.GreeterServiceTest",
     deps = [
-        "//java/com/GreeterClient:greeter_client",
-        "//java/com/GreeterServer/server:greeter_server",
+        "//java/com/sample-app/greeter-service/test-client:greeter_client",
+        "//java/com/sample-app/greeter-service/server:greeter_server",
         "@main_mavin//:junit_junit",
         "@main_mavin//:org_slf4j_slf4j_api",
         "@main_mavin//:javax_servlet_javax_servlet_api",

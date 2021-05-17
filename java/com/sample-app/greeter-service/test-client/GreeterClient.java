@@ -1,4 +1,4 @@
-package com.greeterclient;
+package com.sampleapp.greeterservice;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -7,10 +7,6 @@ import java.util.logging.Logger;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
-
-import com.greeterservice.HelloRequest;
-import com.greeterservice.HelloReply;
-import com.greeterservice.GreeterGrpc;
 
 /**
  * A simple client that requests a greeting from the {@link
