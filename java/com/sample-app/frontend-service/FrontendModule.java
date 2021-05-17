@@ -1,4 +1,4 @@
-package com.frontendservice;
+package com.sampleapp.frontendservice;
 
 import com.google.inject.AbstractModule;
 

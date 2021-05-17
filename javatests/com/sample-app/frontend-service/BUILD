@@ -4,9 +4,9 @@ java_test(
     name = "FrontendServletTest",
     size = "small",
     srcs = ["FrontendServletTest.java"],
-    test_class = "com.frontendservice.FrontendServletTest",
+    test_class = "com.sampleapp.frontendservice.FrontendServletTest",
     deps = [
-        "//java/com/FrontendServer:frontend-service",
+        "//java/com/sample-app/frontend-service:frontend-service",
         "@main_mavin//:junit_junit",
         "@main_mavin//:org_mockito_mockito_all",
         "@main_mavin//:org_slf4j_slf4j_api",

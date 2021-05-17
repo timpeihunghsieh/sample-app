@@ -15,7 +15,7 @@ java_library(
         "GreeterCallerImpl.java",
     ],
     deps = [
-        "//java/com/GreeterServer/greeter:greeter_java_grpc",
+        "//java/com/sample-app/greeter-service/greeter:greeter_java_grpc",
         "@main_mavin//:org_eclipse_jetty_jetty_server",
         "@main_mavin//:org_eclipse_jetty_jetty_servlet",
         "@main_mavin//:org_eclipse_jetty_jetty_util",
@@ -31,7 +31,7 @@ java_library(
 java_image(
     name = "frontend-service-img",
     # base = "@ubuntu//image",  # This is optional. It makes it easier to debug,
-    main_class = "com.frontendservice.FrontendServer",
+    main_class = "com.sampleapp.frontendservice.FrontendServer",
     runtime_deps = [
         ":frontend-service",
     ],

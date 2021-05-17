@@ -1,13 +1,13 @@
-package com.frontendservice;
+package com.sampleapp.frontendservice;
 
 import com.google.inject.Inject;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
-import com.greeterservice.HelloRequest;
-import com.greeterservice.HelloReply;
-import com.greeterservice.GreeterGrpc;
+import com.sampleapp.greeterservice.HelloRequest;
+import com.sampleapp.greeterservice.HelloReply;
+import com.sampleapp.greeterservice.GreeterGrpc;
 
 public class GreeterCallerImpl implements GreeterCaller {
   private final ManagedChannel channel;

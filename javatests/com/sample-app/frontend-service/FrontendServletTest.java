@@ -1,4 +1,4 @@
-package com.frontendservice;
+package com.sampleapp.frontendservice;
 
 import static org.junit.Assert.assertTrue;
 
