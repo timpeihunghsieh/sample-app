@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: greeter-service
+    version: v1
+  name: greeter-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: greeter-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: greeter-service
+        version: v1
+    spec:
+      containers:
+        - image: greeter-service:latest
+          name: greeter-service
+          ports:
+            - containerPort: 50051
+              protocol: TCP
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 0

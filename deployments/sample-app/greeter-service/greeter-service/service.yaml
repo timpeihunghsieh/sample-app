@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: greeter-service
+  name: greeter-service
+  namespace: default
+spec:
+  ports:
+    - name: grpc
+      port: 50051
+      protocol: TCP
+      targetPort: 50051
+  selector:
+    app: greeter-service
+  sessionAffinity: None
+  type: ClusterIP
