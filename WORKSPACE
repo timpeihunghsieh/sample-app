@@ -124,3 +124,9 @@ k8s_defaults(
     cluster = "minikube",
     image_chroot = "localhost:5000",
 )
+
+k8s_defaults(
+    name = "simulation_k8",
+    cluster = "gke_elevated-dynamo-310317_us-east1-b_simulation",
+    image_chroot = "gcr.io/elevated-dynamo-310317",
+)
