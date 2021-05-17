@@ -9,5 +9,5 @@
 # # ELK
 ./deployments/elk-stack/startup.sh
 
-bazel run deployments/greeter-server/simulation:k8-all.apply
-bazel run deployments/FrontendService/simulation:k8-all.apply
+bazel run deployments/sample-app/greeter-service/simulation:k8-all.apply
+bazel run deployments/sample-app/frontend-service/simulation:k8-all.apply

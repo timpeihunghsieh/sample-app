@@ -1,7 +1,0 @@
-package(default_visibility = ["//visibility:public"])
-
-exports_files([
-    "deployment.yaml",
-    "service.yaml",
-    "virtual-service.yaml",
-])
