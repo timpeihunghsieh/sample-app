@@ -4,7 +4,7 @@
 ./deployments/istio/startup.sh
 
 # Prometheus stack
-# ./deployments/prometheus-stack/startup.sh
+./deployments/prometheus-stack/startup.sh
 
 # # ELK
 # ./deployments/elk-stack/startup.sh
